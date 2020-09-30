@@ -43,6 +43,20 @@ main {
 
 .left {
   background-color: yellow;
+  float: left;
+}
+
+.right {
+  background-color: purple;
+  float: right;
+  position: relative;
+}
+
+.center {
+  position: absolute;
+  background-color: black;
+  height: 60px;
+  width: 60px;
 }
 footer {
   height: 10vh;
