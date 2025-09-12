@@ -1,9 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UFT-8" />
-        <meta name="vieport" content="widt-device-width, intitial-scal">
-        <
-    </head>
-
+<head>
+    <meta charset="utf-8">
+    <title>Company Portal Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Company Portal Login</h1>
+    <form id="loginForm">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+        </div>
+        <button type="submit">Login</button>
+        <p id="error" style="color:red;"></p>
+    </form>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        var user = document.getElementById('username').value;
+        var pass = document.getElementById('password').value;
+        if(user === 'admin' && pass === 'password'){
+            localStorage.setItem('loggedIn','true');
+            location.href = 'portal.html';
+        } else {
+            document.getElementById('error').textContent = 'Invalid credentials';
+        }
+    });
+</script>
+</body>
 </html>

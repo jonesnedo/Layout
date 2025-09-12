@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Company Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Company Details</h1>
+    <button id="logout">Logout</button>
+    <form id="companyForm">
+        <div>
+            <label for="companyName">Company Name:</label>
+            <input type="text" id="companyName" required>
+        </div>
+        <div>
+            <label for="address">Address:</label>
+            <input type="text" id="address" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" required></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+<script>
+    if(localStorage.getItem('loggedIn') !== 'true'){
+        location.href = 'index.html';
+    }
+    document.getElementById('companyForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        var data = {
+            companyName: document.getElementById('companyName').value,
+            address: document.getElementById('address').value,
+            email: document.getElementById('email').value,
+            description: document.getElementById('description').value
+        };
+        localStorage.setItem('companyData', JSON.stringify(data));
+        alert('Company details saved!');
+        this.reset();
+    });
+    document.getElementById('logout').addEventListener('click', function(){
+        localStorage.removeItem('loggedIn');
+        location.href = 'index.html';
+    });
+</script>
+</body>
+</html>
